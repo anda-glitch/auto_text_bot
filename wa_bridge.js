@@ -40,7 +40,13 @@ const rl = readline.createInterface({
 rl.on('line', async (line) => {
     try {
         const cmd = JSON.parse(line.trim());
-        if (cmd.action === 'send') {
+        if (cmd.action === 'list_groups') {
+            const chats = await client.getChats();
+            const groups = chats
+                .filter(chat => chat.isGroup)
+                .map(group => ({ name: group.name, id: group.id._serialized }));
+            console.log(`LIST_GROUPS_DATA:${JSON.stringify(groups)}`);
+        } else if (cmd.action === 'send') {
             const numId = `${cmd.target}@c.us`;
             await client.sendMessage(numId, cmd.message);
             console.log(`MESSAGE_SENT_SUCCESS:${cmd.target}`);
@@ -53,6 +59,9 @@ rl.on('line', async (line) => {
             } else {
                 console.log(`ERROR_GROUP_NOT_FOUND:${cmd.target}`);
             }
+        } else if (cmd.action === 'send_group_id') {
+            await client.sendMessage(cmd.target, cmd.message);
+            console.log(`MESSAGE_SENT_GROUP_ID_SUCCESS:${cmd.target}`);
         }
     } catch (err) {
         console.error("Error parsing/executing command:", err, line);
