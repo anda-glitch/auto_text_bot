@@ -85,7 +85,7 @@ def main():
             payload = {
                 "action": action,
                 "target": target,
-                "message": "hi"
+                "message": "."
             }
             json_str = json.dumps(payload)
             
@@ -93,7 +93,7 @@ def main():
             process.stdin.flush()
             
             message_count += 1
-            print(f"[Python] Loop #{message_count}: Sent 'hi' to {target_label} '{target}'.")
+            print(f"[Python] Loop #{message_count}: Sent '.' to {target_label} '{target}'.")
 
             # 1 minute sleep
             time.sleep(60)
