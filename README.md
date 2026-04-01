@@ -35,10 +35,13 @@ Run the Python bot script:
 python3 bot.py
 ```
 
-1. **Select Target**: The script will prompt you whether you want to send a message to a **Person** (`1`) or a **Group** (`2`).
-2. **Enter Details**: Type the phone number (with country code, e.g., `14155552671`) or the *exact* name of the WhatsApp group.
-3. **Scan the QR Code**: An ASCII QR code will be dynamically generated right in your terminal. Open the WhatsApp app on your phone, go to **Settings > Linked Devices > Link a Device**, and scan it.
-4. **Enjoy!** Once authenticated, the Python script will start sending the automated payload ("hi") on its 1-minute schedule. 
+1. **Select Target**: After the bot connects and displays `✅ WHATSAPP IS CONNECTED!`, you will see a menu:
+    - **1: Person (Number)**: Enter the number with country code (e.g., `614...`).
+    - **2: Name of group**: Enter the *exact* name of the group.
+    - **3: Group ID**: Use a permanent ID (e.g., `120363...@g.us`).
+    - **4: List all Groups**: This will fetch and print a table of all your groups and their IDs so you can copy-paste them.
+2. **Scan the QR Code**: If it's your first time, an ASCII QR code will be generated in your terminal. Scan it via WhatsApp **Linked Devices**.
+3. **Enjoy!** Once authenticated and target is selected, it will start sending the automated payload on its 1-minute schedule.
 
 *Note: You only need to scan the QR code the very first time. Your session will be saved locally in a hidden `.wwebjs_auth` directory so you won't have to scan it again.*
 
